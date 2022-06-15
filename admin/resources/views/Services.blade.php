@@ -41,7 +41,24 @@
     </div>
   </div>
   
+  
+
 @endsection
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-center p-3">
+        <h5 class="mt-4">Are You Sure to Delete?</h5>
+        <h6 id="serviceDeleteBtn"></h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  id="serviceDeleteConfirmBtn" class="btn btn-primary btn-sm">Yes</button>
+        <button type="button" class="btn btn-danger btn-sm" data-mdb-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 @section('script')
