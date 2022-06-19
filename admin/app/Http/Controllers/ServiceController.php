@@ -16,6 +16,12 @@ class ServiceController extends Controller
         return $result;
     }
     
+    function getServicesDetails(Request $request){
+      $id = $request->input('id');
+      $result = json_encode(ServicesModel::where('id','=',$id)->get());
+          return $result;
+      }
+    
     function deleteService(Request $request){
        $id = $request->input('id');
       $result = ServicesModel::where('id','=',$id)->delete();
@@ -26,4 +32,18 @@ class ServiceController extends Controller
         return 0 ;
       }   
     }
+    
+    function serviceUpdate(Request $request){
+      $id = $request->input('id');
+      $name = $request->input('name');
+      $des = $request->input('des');
+      $img = $request->input('img');
+     $result = ServicesModel::where('id','=',$id)->update(['service_name'=>$name,'service_des'=>$des,'service_img'=>$img]);
+     
+     if($result==true){
+       return 1 ;
+     }else{
+       return 0 ;
+     }   
+   }
 }

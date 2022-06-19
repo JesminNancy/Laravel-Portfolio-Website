@@ -1,10 +1,14 @@
 @extends('Layout.app')
 
 @section('content')
-    
+  
+ 
 <div id="mainDiv" class="container d-none">
   <div class="row">
   <div class="col-md-12 p-5">
+  
+    
+    
   <table id="" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
       <tr>
@@ -58,11 +62,33 @@
       </div>
     </div>
   </div>
+</div> 
+
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-center p-5">
+        <h6 id="serviceEditBtn"></h6>
+        <div id="serviceEditForm" class=" d-none w-100">
+          <input id="serviceNameId" type="text" id="" class="form-control mb-4"  placeholder="Service-Name"/>
+          <input id="serviceDesId" type="text" id="" class="form-control mb-4"  placeholder="Service-Descrption"/>
+          <input id="serviceImgId" type="text" id="" class="form-control"  placeholder="Service-Image"/>
+        </div>  
+          <img  id="serviceEditLoader" class="loading-icon m-5" src="{{asset('images/loader.svg')}}" alt="">
+          <h5 id="serviceEditWrong" class="d-none">Something went wrong!</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  id="serviceUpdateConfirmBtn" class="btn btn-primary btn-sm">Save</button>
+        <button type="button" class="btn btn-danger btn-sm" data-mdb-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-@section('script')
 
+@section('script')
 <script type="text/javascript">
   getServicesData();
 </script>
