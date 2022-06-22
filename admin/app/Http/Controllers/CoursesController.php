@@ -45,8 +45,7 @@ class CoursesController extends Controller
         $course_link = $request->input('course_link');
         $course_img = $request->input('course_img');
         
-       $result = CoursesModel::where('id','=',$id)->update(
-               [
+       $result = CoursesModel::where('id','=',$id)->update([
                'course_name'=>$course_name,
                'course_des'=>$course_des,
                'course_fee'=>$course_fee,
@@ -54,8 +53,7 @@ class CoursesController extends Controller
                'course_totalclass'=>$course_totalclass,
                'course_link'=>$course_link,
                'course_img'=>$course_img,
-               ]
-       );
+               ]);
        
        if($result==true){
          return 1 ;
