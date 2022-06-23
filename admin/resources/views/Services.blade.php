@@ -9,7 +9,7 @@
   
     <button id="addNewBtnId" class="btn btn-sm btn-danger my-3">Add New</button>
     
-  <table id="" class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <table id="serviceDataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
       <tr>
         <th class="th-sm">Image</th>
@@ -54,7 +54,7 @@
     <div class="modal-content">
       <div class="modal-body text-center p-3">
         <h5 class="mt-4">Are You Sure to Delete?</h5>
-        <h6 id="serviceDeleteBtn"></h6>
+        <h6 id="serviceDeleteBtn" class="d-none"></h6>
       </div>
       <div class="modal-footer">
         <button type="button"  id="serviceDeleteConfirmBtn" class="btn btn-primary btn-sm">Yes</button>
@@ -68,8 +68,14 @@
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-body text-center p-5">
-        <h6 id="serviceEditBtn"></h6>
+      <div class="modal-header">
+        <h5 class="modal-title">Update Service</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center p-4">
+        <h6 id="serviceEditBtn" class="d-none"></h6>
         <div id="serviceEditForm" class=" d-none w-100">
           <input id="serviceNameId" type="text" class="form-control mb-4"  placeholder="Service-Name"/>
           <input id="serviceDesId" type="text"  class="form-control mb-4"  placeholder="Service-Descrption"/>
@@ -118,7 +124,8 @@ axios.get('/getServicesData')
 
             $('#mainDiv').removeClass('d-none');
             $('#loaderDiv').addClass('d-none');
-
+            
+            $('#serviceDataTable').DataTable().destroy();
             $('#service_table').empty();
             var jsonData = response.data;
 
@@ -150,7 +157,10 @@ axios.get('/getServicesData')
               $('#editModal').modal('show');
 
           });
-
+          
+          $('#serviceDataTable').DataTable({"order":false});
+          $('.dataTables_length').addClass('bs-select');
+          
         } else {
             $('#loaderDiv').addClass('d-none');
             $('#wrongDiv').removeClass('d-none');
@@ -165,8 +175,8 @@ axios.get('/getServicesData')
 }
 //Services Delete Modal Yes Button
 $('#serviceDeleteConfirmBtn').click(function() {
-var id = $('#serviceDeleteBtn').html();
-ServiceDelete(id);
+    var id = $('#serviceDeleteBtn').html();
+    ServiceDelete(id);
 
 })
 
