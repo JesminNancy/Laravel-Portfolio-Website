@@ -8,7 +8,7 @@
   <div class="row">
   <div class="col-md-12 p-5">
   
-    <button id="addNewCourseBtnId" class="btn my-3 btn-sm btn-danger">Add New </button>
+    <button id="addNewCourseBtnId" class="btn my-3 btn-sm btn-info">Add New </button>
     
   <table id="courseDataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
@@ -28,7 +28,6 @@
       <th class="th-sm">1000</th>
       <th class="th-sm">120</th>
       <th class="th-sm">200</th>
-      <th class="th-sm"><a href="" ><i class="fas fa-eye"></i></a></th>
       <th class="th-sm"><a href="" ><i class="fas fa-edit"></i></a></th>
       <th class="th-sm"><a href="" ><i class="fas fa-trash-alt"></i></a></th>
       </tr>	
@@ -164,7 +163,7 @@ aria-hidden="true">
 getCoursesData()
 
 
-//Service Display For Admin Panel
+//Courses Display For Admin Panel
 function getCoursesData() {
 
 axios.get('/getCoursesData')
