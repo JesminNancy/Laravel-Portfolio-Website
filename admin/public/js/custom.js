@@ -9,7 +9,7 @@ function getProjectsData() {
               $('#mainDivProject').removeClass('d-none');
               $('#loaderDivProject').addClass('d-none');
               
-            //  $('#courseDataTable').DataTable().destroy();
+             $('#projectDataTable').DataTable().destroy();
              $('#project_table').empty();
               
               var jsonData = response.data;
@@ -40,8 +40,8 @@ function getProjectsData() {
                  ProjectsDetails(id);
               })
              
-              // $('#courseDataTable').DataTable({"order":false});
-              // $('.dataTables_length').addClass('bs-select');
+               $('#projectDataTable').DataTable({"order":false});
+               $('.dataTables_length').addClass('bs-select');
              
           } else {
               $('#loaderDivProject').addClass('d-none');
