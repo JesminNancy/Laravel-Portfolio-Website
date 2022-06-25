@@ -8,6 +8,7 @@ use App\ServicesModel;
 use App\CoursesModel;
 use App\ProjectsModel;
 use App\ContactModel;
+use App\ReviewModel;
 
 class HomeController extends Controller
 {
@@ -23,11 +24,12 @@ class HomeController extends Controller
        $CoursesData = json_decode(CoursesModel::orderBy('id','desc')->limit(6)->get());
        $ProjectData = json_decode(ProjectsModel::orderBy('id','desc')->limit(10)->get());
        
-       
+       $reviewData = json_decode(ReviewModel::all());
         return view('Home',[
         'ServicesData'=>$ServicesData,
         'CoursesData'=>$CoursesData,
         'ProjectData'=>$ProjectData,
+        'reviewData'=>$reviewData
     ]);
         
     }
