@@ -15,3 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@HomeIndex');
 Route::post('/contactSend', 'HomeController@contactSend');
+
+Route::get('/courses', 'CourseController@coursePage');
+Route::get('/Projects', 'ProjectsController@ProjectPage');
+Route::get('/Policy', 'PolicyController@PolicyPage');
+Route::get('/Terms', 'TermsController@TermsPage');
