@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\PhotoModel;
 
 class PhotoController extends Controller
 {
@@ -12,6 +13,13 @@ class PhotoController extends Controller
     
     function PhotoUpload(Request $request){
       $photopath = $request->file('photo')->store('public');
-     return $photopath;
+      
+      $photoName=(explode('/',$photopath))[1];
+      
+         $host=$_SERVER['HTTP_HOST'];
+        
+        $location="http://".$host."/storage/".$photoName;
+        $result=PhotoModel::insert(['location'=>$location]);
+         return $result;
     }
 }

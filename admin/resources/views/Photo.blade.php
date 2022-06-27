@@ -41,31 +41,30 @@
             reader.readAsDataURL(this.files[0]);
             reader.onload=function (event) {
                var ImgSource= event.target.result;
-                $('#imgPreview').attr('src',ImgSource)
+                $('#imgPreview').attr('src',ImgSource);
             }
         })
         
 
         $('#SavePhoto').on('click',function () {
-            // $('#SavePhoto').html("<div class='spinner-border spinner-border-sm' role='status'></div>")
+        $('#SavePhoto').html("<div class='spinner-border spinner-border-sm' role='status'></div>")
            var PhotoFile= $('#imgInput').prop('files')[0];
            var formData=new FormData();
            formData.append('photo',PhotoFile);
            axios.post("/PhotoUpload",formData).then(function (response) {
-           alert(response.data);
-            //    if(response.status==200 && response.data==1){
-            //        $('#PhotoModal').modal('hide');
-            //        $('#SavePhoto').html('Save');
-            //        toastr.success('Photo Upload Success');
-            //    }
-            //    else{
-            //        $('#PhotoModal').modal('hide');
-            //        toastr.error('Photo Upload Fail');
-            //    }
+               if(response.status==200 && response.data==1){
+                   $('#PhotoModal').modal('hide');
+                   $('#SavePhoto').html('Save');
+                   alert('Photo Upload Success');
+               }
+               else{
+                   $('#PhotoModal').modal('hide');
+                   alert('Photo Upload Fail');
+               }
            }).catch(function (error) {
-            //    $('#PhotoModal').modal('hide');
-            //    toastr.error('Photo Upload Fail');
-            //    $('#SavePhoto').html('Save');
+               $('#PhotoModal').modal('hide');
+               alert('Photo Upload Fail');
+              
            })
         });
     </script>
